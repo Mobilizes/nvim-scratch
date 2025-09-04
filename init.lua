@@ -7,8 +7,6 @@ vim.cmd('set relativenumber')
 
 vim.cmd('set clipboard=unnamedplus')
 
-require('config.lazy')
-
 vim.diagnostic.config({
   virtual_text = {
     prefix = "●", -- could be "●", "▎", "x", etc.
@@ -24,27 +22,8 @@ vim.g.loaded_netrwPlugin = 1
 
 vim.opt.termguicolors = true
 
-require('lualine').setup()
-require('mini.surround').setup()
-require('mason').setup({
-  ensure_installed = {
-    lsp = {
-      'clangd',
-      'pylsp',
-      'lua_ls',
-    },
-    formatter = {
-      'clang-format'
-    },
-    linter = {
-      -- 'cpplint',
-      -- 'pylint',
-      'luacheck',
-    },
-  },
-})
-require('bufferin').setup({})
-
+require('config.lazy')
+require('config.setup')
 require('config.keymaps')
 
 vim.cmd('colorscheme catppuccin-mocha')

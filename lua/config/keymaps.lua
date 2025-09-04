@@ -15,4 +15,6 @@ vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, bufopts)
 
 vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, bufopts)
 
-vim.keymap.set('n', '<leader>b', '<cmd>Bufferin<cr>', { desc = 'Toggle Bufferin' })
+vim.keymap.set('n', '<leader>b', ':Bufferin<cr>', { desc = 'Toggle Bufferin' })
+
+vim.keymap.set('n', '<leader>l', ':Lazy<cr>', { desc = 'Lazy Manager' })
