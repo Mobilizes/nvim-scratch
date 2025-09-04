@@ -36,3 +36,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     vim.highlight.on_yank { higroup = 'IncSearch', timeout = 150 }
   end,
 })
+
+vim.api.nvim_set_hl(0, 'LineNrAbove', { fg='#45454d' })
+vim.api.nvim_set_hl(0, 'LineNr', { fg='white', bold=true })
+vim.api.nvim_set_hl(0, 'LineNrBelow', { fg='#45454d' })
