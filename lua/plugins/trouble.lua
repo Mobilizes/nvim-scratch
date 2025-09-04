@@ -3,6 +3,7 @@ return {
   opts = {},     -- for default options, refer to the configuration section for custom setup.
   cmd = 'Trouble',
   keys = {
+    { '<leader>x', '', desc = 'Diagnostics' },
     {
       '<leader>xx',
       '<cmd>Trouble diagnostics toggle<cr>',
@@ -19,7 +20,7 @@ return {
       desc = 'Symbols (Trouble)',
     },
     {
-      '<leader>cl',
+      '<leader>cS',
       '<cmd>Trouble lsp toggle focus=false win.position=right<cr>',
       desc = 'LSP Definitions / references / ... (Trouble)',
     },
