@@ -3,7 +3,7 @@ vim.cmd('set tabstop=2')
 vim.cmd('set softtabstop=2')
 vim.cmd('set shiftwidth=2')
 
-vim.cmd('set relativenumber')
+vim.cmd('set nu rnu')
 
 vim.cmd('set clipboard=unnamedplus')
 
@@ -27,3 +27,12 @@ require('config.setup')
 require('config.keymaps')
 
 vim.cmd('colorscheme catppuccin-mocha')
+
+vim.api.nvim_create_autocmd('TextYankPost', {
+  group = vim.api.nvim_create_augroup('highlight_yank', {}),
+  desc = 'Highlight selection on yank',
+  pattern = '*',
+  callback = function()
+    vim.highlight.on_yank { higroup = 'IncSearch', timeout = 150 }
+  end,
+})
