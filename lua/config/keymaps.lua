@@ -1,16 +1,26 @@
-vim.keymap.set('n', '<leader>E', ':NvimTreeToggle<CR>')
-vim.keymap.set('n', '<C-h>', '<C-w><Left>')
-vim.keymap.set('n', '<C-l>', '<C-w><Right>')
-vim.keymap.set('n', '<C-j>', '<C-w><Down>')
-vim.keymap.set('n', '<C-k>', '<C-w><Up>')
+-- Map silencer
+local function map(mode, lhs, rhs, opts)
+  local options = { silent = true }
+  if opts then
+    options = vim.tbl_extend('force', options, opts)
+  end
+  vim.keymap.set(mode, lhs, rhs, options)
+end
 
-vim.keymap.set('n', '<C-s>', ':w<CR>')
-vim.keymap.set('n', '<C-o>', 'ddO')
+map('n', '<leader>E', ':NvimTreeToggle<CR>')
+map('n', '<C-h>', '<C-w><Left>')
+map('n', '<C-l>', '<C-w><Right>')
+map('n', '<C-j>', '<C-w><Down>')
+map('n', '<C-k>', '<C-w><Up>')
 
-vim.keymap.set({ 'n', 'v' }, '<leader>c', '', { desc = 'Code' })
-vim.keymap.set('v', '<leader>cf', vim.lsp.buf.format, bufopts, { desc = 'Format selection' })
-vim.keymap.set('n', '<leader>cF', vim.lsp.buf.format, { desc = 'Format all' })
-vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, { desc = 'Code actions' })
+map('n', '<C-s>', ':w<CR>')
+map('n', '@o', 'ddO')
 
-vim.keymap.set('n', '<leader>l', ':Lazy<cr>', { desc = 'Lazy Manager' })
-vim.keymap.set('n', '<leader>m', ':Mason<cr>', { desc = 'Mason Manager' })
+map({ 'n', 'v' }, '<leader>c', '', { desc = 'Code' })
+map('v', '<leader>cf', vim.lsp.buf.format, bufopts, { desc = 'Format selection' })
+map('n', '<leader>cF', vim.lsp.buf.format, { desc = 'Format all' })
+map('n', '<leader>ca', vim.lsp.buf.code_action, { desc = 'Code actions' })
+map('n', '<leader>cr', vim.lsp.buf.rename, { desc = 'Symbol rename' })
+
+map('n', '<leader>l', ':Lazy<cr>', { desc = 'Lazy Manager' })
+map('n', '<leader>m', ':Mason<cr>', { desc = 'Mason Manager' })
