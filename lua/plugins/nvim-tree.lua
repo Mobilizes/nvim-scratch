@@ -11,6 +11,9 @@ return {
       view = {
         side = 'right',
       },
+      renderer = {
+        highlight_hidden = 'all',
+      },
     }
   end,
 }

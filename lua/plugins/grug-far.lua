@@ -1,9 +1,21 @@
 return {
-  'MagicDuck/grug-far.nvim',
-  -- Note (lazy loading): grug-far.lua defers all it's requires so it's lazy by default
-  -- additional lazy config to defer loading is not really needed...
-  config = function()
-    require('grug-far').setup({
-    });
-  end,
+  "MagicDuck/grug-far.nvim",
+  keys = {
+    {
+      "<leader>sr",
+      function()
+        local grug = require("grug-far")
+        -- for some stupid reason, it doesnt work and it still goes to the left.
+        -- the only way is to use botright, and even then it still does not work
+        -- ts so ass 💔
+        grug.open({
+          openTargetWindow = {
+            preferredLocation = 'right',
+          },
+        })
+      end,
+      desc = "Grep workspace",
+      silent = true
+    },
+  },
 }

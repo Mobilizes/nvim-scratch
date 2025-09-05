@@ -19,3 +19,6 @@ require('mason').setup({
 })
 require('bufferin').setup({})
 require('render-markdown').setup({})
+require('select-undo').setup({})
+
+vim.lsp.enable('laravel_ls')
