@@ -27,3 +27,8 @@ require('laravel').setup({
 })
 
 vim.lsp.enable('laravel_ls')
+vim.lsp.config('intelephense', {
+  cmd = { 'intelephense', '--stdio' },
+  filetypes = { 'php', 'blade' },
+})
+vim.lsp.enable('intelephense')

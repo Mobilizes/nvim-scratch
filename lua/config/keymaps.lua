@@ -5,10 +5,6 @@ vim.keymap.del('n', 'gra')
 vim.keymap.del('x', 'gra')
 vim.keymap.del('n', 'grn')
 
--- Keep selection when indenting in visual mode
-vim.keymap.set("v", "<", "<gv")
-vim.keymap.set("v", ">", ">gv")
-
 -- Map silencer
 local function map(mode, lhs, rhs, opts)
   local options = { silent = true }
@@ -17,6 +13,13 @@ local function map(mode, lhs, rhs, opts)
   end
   vim.keymap.set(mode, lhs, rhs, options)
 end
+
+-- Keep selection when indenting in visual mode
+map('v', '<', '<gv')
+map('v', '>', '>gv')
+
+-- Remove search highlight
+map('n', '<Esc>', ':nohl<CR>')
 
 -- Move window easily
 map('n', '<C-h>', '<C-w><Left>')
