@@ -5,11 +5,6 @@ return {
     {
       'mason-org/mason.nvim',
       opts = {},
-      dependencies = {
-        'stevearc/dressing.nvim',
-        opts = {},
-        event = 'VeryLazy'
-      },
     },
     'neovim/nvim-lspconfig',
   },

@@ -45,6 +45,8 @@ map('n', '<leader>cF', vim.lsp.buf.format, { desc = 'Format all' })
 map('n', '<leader>ca', vim.lsp.buf.code_action, { desc = 'Code actions' })
 map('n', '<leader>cr', vim.lsp.buf.rename, { desc = 'Symbol rename' })
 
+map('n', '<leader>s', '', { desc = 'Search' })
+
 -- Managers
 map('n', '<leader>l', ':Lazy<cr>', { desc = 'Lazy Manager' })
 map('n', '<leader>m', ':Mason<cr>', { desc = 'Mason Manager' })

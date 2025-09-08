@@ -1,6 +1,7 @@
 {
     "diagnostics.globals": [
         "bufopts",
-        "vim"
+        "vim",
+        "ensure_installed"
     ]
 }
