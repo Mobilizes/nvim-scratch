@@ -30,7 +30,7 @@ require('conform').setup({
 		lua = { 'stylua' },
 		c = { 'clang-format' },
 		cpp = { 'clang-format' },
-		php = { 'php-cs-fixer' },
+		php = { 'php_cs_fixer' },
 		blade = { 'blade-formatter' },
 	},
 	formatters = {

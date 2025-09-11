@@ -32,6 +32,7 @@ map('n', '<leader>E', ':NvimTreeToggle<CR>', { desc = 'Toggle NvimTree' })
 
 -- Easy save
 map('n', '<C-s>', ':w<CR>')
+map('i', '<C-s>', '<Esc>:w<CR>')
 
 -- Indent in current line depends on treesitter context
 map('n', '@o', 'ddO')
@@ -48,6 +49,9 @@ map('n', '<leader>cF', function()
 end, { desc = 'Format all' })
 map('n', '<leader>ca', vim.lsp.buf.code_action, { desc = 'Code actions' })
 map('n', '<leader>cr', vim.lsp.buf.rename, { desc = 'Symbol rename' })
+map('n', '<leader>cu', function()
+	vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+end, { desc = 'Toggle Inlay Hint' })
 
 map('n', '<leader>s', '', { desc = 'Search' })
 
