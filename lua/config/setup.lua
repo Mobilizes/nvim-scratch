@@ -1,39 +1,49 @@
-require('lualine').setup()
-require('mini.surround').setup()
-require('mason').setup({
-  ensure_installed = {
-    lsp = {
-      'clangd',
-      'pylsp',
-      'lua_ls',
-      'intelephense',
-      'html-lsp',
-    },
-    formatter = {
-      'clang-format'
-    },
-    linter = {
-      -- 'cpplint',
-      -- 'pylint',
-      'luacheck',
-    },
-  },
+require("lualine").setup()
+require("mini.surround").setup()
+require("mason").setup({
+	ensure_installed = {
+		lsp = {
+			"clangd",
+			"pylsp",
+			"lua_ls",
+			"intelephense",
+			"html-lsp",
+		},
+		formatter = {
+			"clang-format",
+			"stylua",
+		},
+		linter = {
+			-- 'cpplint',
+			-- 'pylint',
+			"luacheck",
+		},
+	},
 })
-require('bufferin').setup({})
-require('render-markdown').setup({})
-require('select-undo').setup({})
--- require('laravel').setup({
---   notifications = false,
--- })
-require('mason-nvim-lint').setup()
+require("bufferin").setup({})
+require("render-markdown").setup({})
+require("select-undo").setup({})
+require("mason-nvim-lint").setup()
+require("conform").setup({
+	formatters_by_ft = {
+		lua = { "stylua" },
+		c = { "clang-format" },
+		cpp = { "clang-format" },
+	},
+	formatters = {
+		clang_format = {
+			prepend_args = { "--style=file", "--fallback-style=google" },
+		},
+	},
+})
 
-vim.lsp.enable('laravel_ls')
+vim.lsp.enable("laravel_ls")
 
-require'nvim-treesitter.configs'.setup {
-  highlight = {
-    enable = true,
-  },
-}
+require("nvim-treesitter.configs").setup({
+	highlight = {
+		enable = true,
+	},
+})
 
 -- require 'nvim-treesitter.configs'.setup {
 --   ensure_installed = { "php", "html" },
