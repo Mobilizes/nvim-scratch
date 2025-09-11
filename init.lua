@@ -22,8 +22,8 @@ vim.opt.termguicolors = true
 
 require('config.lazy')
 require('config.setup')
-require('config.keymaps')
 require('config.autocmds')
+require('config.keymaps')
 
 vim.cmd('colorscheme catppuccin-mocha')
 

@@ -55,6 +55,9 @@ end, { desc = 'Toggle Inlay Hint' })
 
 map('n', '<leader>s', '', { desc = 'Search' })
 
+-- Terminal
+map({'n', 'x'}, '<leader>t', ':Floater<cr>', { desc = 'Toggle Terminal' })
+
 -- Managers
 map('n', '<leader>l', ':Lazy<cr>', { desc = 'Lazy Manager' })
 map('n', '<leader>m', ':Mason<cr>', { desc = 'Mason Manager' })
