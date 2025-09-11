@@ -1,5 +1,4 @@
 return {
-  'nvim-mini/mini.surround',
-  version = '*',
+	'nvim-mini/mini.surround',
+	version = '*',
 }
-
