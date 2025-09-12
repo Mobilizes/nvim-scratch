@@ -1,25 +1,34 @@
+require('nvim-web-devicons').set_icon {
+  mason = {
+    icon = "󰢛",
+    color = "#428850",
+    cterm_color = "65",
+    name = "mason"
+  }
+}
 require('lualine').setup()
 require('mini.surround').setup()
-require('mason').setup({
+require('mason').setup()
+require('mason-lspconfig').setup({
 	ensure_installed = {
-		lsp = {
-			'clangd',
-			'pylsp',
-			'lua_ls',
-			'intelephense',
-			'html-lsp',
-      'jsonls',
-		},
-		formatter = {
-			'clang-format',
-			'stylua',
-			'php-cs-fixer',
-      'blade-formatter',
-		},
-		linter = {
-			'luacheck',
-		},
+		'clangd',
+		'pylsp',
+		'lua_ls',
+		'intelephense',
+		'html',
+		'jsonls',
+    'duster',
 	},
+})
+require('mason-tool-installer').setup({
+  ensure_installed = {
+    'luacheck',
+    'clang-format',
+    'php-cs-fixer',
+    'blade-formatter',
+    'stylua',
+    'black',
+  }
 })
 require('bufferin').setup({})
 require('render-markdown').setup({})
@@ -32,6 +41,7 @@ require('conform').setup({
 		cpp = { 'clang-format' },
 		php = { 'php_cs_fixer' },
 		blade = { 'blade-formatter' },
+		python = { 'black' },
 	},
 	formatters = {
 		clang_format = {
@@ -42,10 +52,23 @@ require('conform').setup({
 
 vim.lsp.enable('laravel_ls')
 
-require('nvim-treesitter.configs').setup({
-	highlight = {
-		enable = true,
-	},
+require("nvim-treesitter.configs").setup({
+  ensure_installed = {
+    "lua",
+    "python",
+    "javascript",
+    "typescript",
+    "html",
+    "css",
+    "json",
+    "php",
+    "bash",
+  },
+  sync_install = false,   -- install asynchronously
+  auto_install = true,    -- automatically install missing parsers
+  highlight = {
+    enable = true,        -- enable Treesitter highlighting
+  },
 })
 
 -- require 'nvim-treesitter.configs'.setup {

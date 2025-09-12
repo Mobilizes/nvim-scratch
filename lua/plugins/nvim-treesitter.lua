@@ -3,18 +3,4 @@ return {
 	branch = 'master',
 	lazy = false,
 	build = ':TSUpdate',
-	config = {
-		ensure_installed = {
-			'blade',
-			'php',
-			'c',
-			'cpp',
-			'python',
-			'javascript',
-			'typescript',
-		},
-		highlight = {
-			enable = true,
-		},
-	},
 }

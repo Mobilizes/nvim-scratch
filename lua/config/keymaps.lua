@@ -36,6 +36,15 @@ map('i', '<C-s>', '<Esc>:w<CR>')
 
 -- Indent in current line depends on treesitter context
 map('n', '@o', 'ddO')
+-- Block q followed by o, but keep q instant otherwise
+vim.keymap.set('n', 'q', function()
+  local c = vim.fn.getcharstr()
+  if c == 'o' then
+    return ''
+  else
+    return 'q' .. c
+  end
+end, { expr = true })
 
 map('n', 'gr', vim.lsp.buf.references, bufopts, { desc = 'Get references' })
 map('n', 'gI', vim.lsp.buf.implementation, bufopts, { desc = 'Get implementation' })
@@ -56,7 +65,10 @@ end, { desc = 'Toggle Inlay Hint' })
 map('n', '<leader>s', '', { desc = 'Search' })
 
 -- Terminal
-map({'n', 'x'}, '<leader>t', ':Floater<cr>', { desc = 'Toggle Terminal' })
+map({ 'n', 'x' }, '<leader>t', function()
+	vim.cmd('Floater')
+	vim.cmd('startinsert')
+end, { desc = 'Toggle Terminal' })
 
 -- Managers
 map('n', '<leader>l', ':Lazy<cr>', { desc = 'Lazy Manager' })
