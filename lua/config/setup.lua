@@ -17,7 +17,6 @@ require('mason-lspconfig').setup({
 		'intelephense',
 		'html',
 		'jsonls',
-    'duster',
 	},
 })
 require('mason-tool-installer').setup({
@@ -28,6 +27,7 @@ require('mason-tool-installer').setup({
     'blade-formatter',
     'stylua',
     'black',
+    'duster',
   }
 })
 require('bufferin').setup({})
