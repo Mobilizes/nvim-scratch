@@ -17,6 +17,7 @@ require('mason-lspconfig').setup({
 		'intelephense',
 		'html',
 		'jsonls',
+    'eslint',
 	},
 })
 require('mason-tool-installer').setup({
@@ -28,6 +29,7 @@ require('mason-tool-installer').setup({
     'stylua',
     'black',
     'duster',
+    'prettier',
   }
 })
 require('bufferin').setup({})
@@ -42,6 +44,7 @@ require('conform').setup({
 		php = { 'php_cs_fixer' },
 		blade = { 'blade-formatter' },
 		python = { 'black' },
+    javascript = { 'prettier' },
 	},
 	formatters = {
 		clang_format = {
