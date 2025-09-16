@@ -4,13 +4,13 @@ return {
 		vim.g.copilot_enabled = false
 		vim.g.copilot_no_tab_map = true
 
-		vim.keymap.set('i', '<C-l>', '<Plug>(copilot-accept-word)', {
+		vim.keymap.set('i', '<M-l>', '<Plug>(copilot-accept-word)', {
 			desc = 'Accept Copilot next word',
 			silent = true,
 			noremap = false,
 		})
 
-		vim.keymap.set('i', '<C-L>', 'copilot#Accept("\\<CR>")', {
+		vim.keymap.set('i', '<C-l>', 'copilot#Accept("\\<CR>")', {
 			desc = 'Accept Copilot suggestion',
 			silent = true,
 			expr = true,
