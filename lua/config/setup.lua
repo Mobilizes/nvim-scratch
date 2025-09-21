@@ -1,11 +1,11 @@
-require('nvim-web-devicons').set_icon {
-  mason = {
-    icon = "󰢛",
-    color = "#428850",
-    cterm_color = "65",
-    name = "mason"
-  }
-}
+require('nvim-web-devicons').set_icon({
+	mason = {
+		icon = '󰢛',
+		color = '#428850',
+		cterm_color = '65',
+		name = 'mason',
+	},
+})
 require('lualine').setup()
 require('mini.surround').setup()
 require('mason').setup()
@@ -17,22 +17,22 @@ require('mason-lspconfig').setup({
 		'intelephense',
 		'html',
 		'jsonls',
-    'ts_ls',
-    'bashls',
+		'ts_ls',
+		'bashls',
 	},
 })
 require('mason-tool-installer').setup({
-  ensure_installed = {
-    'luacheck',
-    'clang-format',
-    'php-cs-fixer',
-    'blade-formatter',
-    'stylua',
-    'black',
-    'duster',
-    'prettier',
-    'shfmt',
-  }
+	ensure_installed = {
+		'luacheck',
+		'clang-format',
+		'php-cs-fixer',
+		'blade-formatter',
+		'stylua',
+		'black',
+		'duster',
+		'prettier',
+		'shfmt',
+	},
 })
 require('bufferin').setup({})
 require('render-markdown').setup({})
@@ -46,10 +46,10 @@ require('conform').setup({
 		php = { 'php_cs_fixer' },
 		blade = { 'blade-formatter' },
 		python = { 'black' },
-    javascript = { 'prettier' },
-    sh = { 'shfmt' },
-    bash = { 'shfmt' },
-    zsh = { 'shfmt' },
+		javascript = { 'prettier' },
+		sh = { 'shfmt' },
+		bash = { 'shfmt' },
+		zsh = { 'shfmt' },
 	},
 	formatters = {
 		clang_format = {
@@ -60,23 +60,43 @@ require('conform').setup({
 
 vim.lsp.enable('laravel_ls')
 
-require("nvim-treesitter.configs").setup({
-  ensure_installed = {
-    "lua",
-    "python",
-    "javascript",
-    "typescript",
-    "html",
-    "css",
-    "json",
-    "php",
-    "bash",
-  },
-  sync_install = false,   -- install asynchronously
-  auto_install = true,    -- automatically install missing parsers
-  highlight = {
-    enable = true,        -- enable Treesitter highlighting
-  },
+require('nvim-treesitter.configs').setup({
+	ensure_installed = {
+		'lua',
+		'python',
+		'javascript',
+		'typescript',
+		'html',
+		'css',
+		'json',
+		'php',
+		'bash',
+	},
+	sync_install = false, -- install asynchronously
+	auto_install = true, -- automatically install missing parsers
+	highlight = {
+		enable = true, -- enable Treesitter highlighting
+	},
+	indent = {
+		enable = true,
+	},
+})
+
+require('nvim-ts-autotag').setup({
+	opts = {
+		-- Defaults
+		enable_close = true, -- Auto close tags
+		enable_rename = true, -- Auto rename pairs of tags
+		enable_close_on_slash = false, -- Auto close on trailing </
+	},
+	-- Also override individual filetype configs, these take priority.
+	-- Empty by default, useful if one of the "opts" global settings
+	-- doesn't work well in a specific filetype
+	per_filetype = {
+		['html'] = {
+			enable_close = true,
+		},
+	},
 })
 
 -- require 'nvim-treesitter.configs'.setup {

@@ -22,10 +22,12 @@ map('v', '>', '>gv')
 map('n', '<Esc>', ':nohl<CR>')
 
 -- Move window easily
-map('n', '<C-h>', '<C-w><Left>')
-map('n', '<C-l>', '<C-w><Right>')
-map('n', '<C-j>', '<C-w><Down>')
-map('n', '<C-k>', '<C-w><Up>')
+map('n', '<C-h>', '<C-w>h')
+map('n', '<C-l>', '<C-w>l')
+map('n', '<C-j>', '<C-w>j')
+map('n', '<C-k>', '<C-w>k')
+map('n', '<C-t>', '<C-w>t')
+map('n', '<C-b>', '<C-w>b')
 
 -- Self explanatory, i wont add comments to each map thats obvious
 map('n', '<leader>E', ':NvimTreeToggle<CR>', { desc = 'Toggle NvimTree' })
@@ -61,6 +63,13 @@ map('n', '<leader>cr', vim.lsp.buf.rename, { desc = 'Symbol rename' })
 map('n', '<leader>cu', function()
 	vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
 end, { desc = 'Toggle Inlay Hint' })
+
+vim.api.nvim_create_autocmd('FileType', {
+	pattern = { 'c', 'cpp' },
+	callback = function()
+		map('n', '<leader>ch', ':LspClangdSwitchSourceHeader<cr>', { desc = 'Switch source header' })
+	end,
+})
 
 map('n', '<leader>s', '', { desc = 'Search' })
 

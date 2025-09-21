@@ -8,7 +8,24 @@ return {
 		keys = {
 			{
 				'<leader>aa',
-				'<cmd>CopilotChatToggle<cr>',
+				function()
+					local window = require('CopilotChat').chat
+					local floater = require('customs.floater')
+					if floater:visible() then
+						floater:hide()
+					end
+
+					if window:visible() and window:focused() then
+						vim.cmd('CopilotChatClose')
+						vim.cmd('stopinsert')
+					elseif window:visible() then
+						window:focus()
+						vim.cmd('startinsert')
+					else
+						vim.cmd('CopilotChatOpen')
+						vim.cmd('startinsert')
+					end
+				end,
 				desc = 'Toggle Copilot Chat',
 				mode = { 'n', 'v' },
 			},
@@ -20,7 +37,6 @@ return {
 				height = 20,
 				border = 'rounded',
 				title = '🤖 AI Assistant',
-				zindex = 100,
 			},
 			headers = {
 				user = '👤 You',
