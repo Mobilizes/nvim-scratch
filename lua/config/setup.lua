@@ -19,6 +19,7 @@ require('mason-lspconfig').setup({
 		'jsonls',
 		'ts_ls',
 		'bashls',
+    'gopls',
 	},
 })
 require('mason-tool-installer').setup({
@@ -32,6 +33,7 @@ require('mason-tool-installer').setup({
 		'duster',
 		'prettier',
 		'shfmt',
+    'goimports',
 	},
 })
 require('bufferin').setup({})
@@ -47,9 +49,12 @@ require('conform').setup({
 		blade = { 'blade-formatter' },
 		python = { 'black' },
 		javascript = { 'prettier' },
+    html = { 'prettier' },
+    css = { 'prettier' },
 		sh = { 'shfmt' },
 		bash = { 'shfmt' },
 		zsh = { 'shfmt' },
+    go = { 'goimports' },
 	},
 	formatters = {
 		clang_format = {
@@ -57,6 +62,7 @@ require('conform').setup({
 		},
 	},
 })
+require("rainbow_csv").setup({})
 
 vim.lsp.enable('laravel_ls')
 
