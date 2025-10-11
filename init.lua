@@ -4,6 +4,7 @@ vim.cmd('set softtabstop=2')
 vim.cmd('set shiftwidth=2')
 vim.cmd('set nu rnu')
 vim.cmd('set clipboard=unnamedplus')
+vim.cmd('set noswapfile')
 
 vim.diagnostic.config({
 	virtual_text = {

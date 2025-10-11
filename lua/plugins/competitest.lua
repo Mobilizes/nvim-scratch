@@ -72,8 +72,8 @@ return {
 					judge = string.sub(task.group, 1, hyphen - 1)
 					contest = string.sub(task.group, hyphen + 3)
 				end
+				name = string.gsub(task.name, ' ', '-')
 				if judge == 'CSES' then
-					name = task.name
 					return string.format('%s/%s/%s.%s', vim.loop.cwd(), judge, name, file_extension)
 				elseif judge == 'Codeforces' then
 					name = string.sub(task.name, 1, 1)

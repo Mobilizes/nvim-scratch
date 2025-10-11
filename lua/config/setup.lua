@@ -19,7 +19,7 @@ require('mason-lspconfig').setup({
 		'jsonls',
 		'ts_ls',
 		'bashls',
-    'gopls',
+		'gopls',
 	},
 })
 require('mason-tool-installer').setup({
@@ -33,7 +33,8 @@ require('mason-tool-installer').setup({
 		'duster',
 		'prettier',
 		'shfmt',
-    'goimports',
+		'goimports',
+		'fixjson',
 	},
 })
 require('bufferin').setup({})
@@ -49,12 +50,13 @@ require('conform').setup({
 		blade = { 'blade-formatter' },
 		python = { 'black' },
 		javascript = { 'prettier' },
-    html = { 'prettier' },
-    css = { 'prettier' },
+		html = { 'prettier' },
+		css = { 'prettier' },
 		sh = { 'shfmt' },
 		bash = { 'shfmt' },
 		zsh = { 'shfmt' },
-    go = { 'goimports' },
+		go = { 'goimports' },
+		json = { 'fixjson' },
 	},
 	formatters = {
 		clang_format = {
@@ -62,7 +64,8 @@ require('conform').setup({
 		},
 	},
 })
-require("rainbow_csv").setup({})
+require('rainbow_csv').setup({})
+require('Comment').setup()
 
 vim.lsp.enable('laravel_ls')
 
@@ -121,3 +124,19 @@ require('nvim-ts-autotag').setup({
 -- }
 
 require('fzf-lua').register_ui_select()
+require('luasnip.loaders.from_vscode').lazy_load({ paths = '~/.config/nvim/snippets' })
+
+vim.lsp.config.clangd = {
+	cmd = {
+		'clangd',
+		'--background-index',
+		'--clang-tidy',
+		'--completion-style=detailed',
+		'--function-arg-placeholders',
+		'--fallback-style=google',
+		'--enable-config',
+		'--header-insertion=never',
+	},
+	root_markers = { '.clangd', 'compile_commands.json' },
+	filetypes = { 'c', 'cpp' },
+}

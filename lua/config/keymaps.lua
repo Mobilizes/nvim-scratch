@@ -1,9 +1,10 @@
--- Remove default keymaps
+-- Remove some default keymaps
 vim.keymap.del('n', 'gri')
 vim.keymap.del('n', 'grr')
 vim.keymap.del('n', 'gra')
-vim.keymap.del('x', 'gra')
 vim.keymap.del('n', 'grn')
+vim.keymap.del('x', 'gra')
+vim.keymap.del('x', 'gcu')
 
 -- Map silencer
 local function map(mode, lhs, rhs, opts)
@@ -37,8 +38,9 @@ map('n', '<C-s>', ':w<CR>')
 map('i', '<C-s>', '<Esc>:w<CR>')
 
 -- Indent in current line depends on treesitter context
-map('n', '<leader>o', 'ddO')
+map('n', '<leader>o', 'ddO', { desc = 'O current line' })
 
+map('n', 'gd', vim.lsp.buf.definition, bufopts, { desc = 'Get definition' })
 map('n', 'gr', vim.lsp.buf.references, bufopts, { desc = 'Get references' })
 map('n', 'gI', vim.lsp.buf.implementation, bufopts, { desc = 'Get implementation' })
 
