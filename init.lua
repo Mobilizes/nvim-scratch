@@ -5,6 +5,7 @@ vim.cmd('set shiftwidth=2')
 vim.cmd('set nu rnu')
 vim.cmd('set clipboard=unnamedplus')
 vim.cmd('set noswapfile')
+vim.cmd('set list listchars=tab:>\\ ,trail:-,eol:󰌑 ')
 
 vim.diagnostic.config({
 	virtual_text = {
