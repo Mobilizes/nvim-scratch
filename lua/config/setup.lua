@@ -66,6 +66,7 @@ require('conform').setup({
 })
 require('rainbow_csv').setup({})
 require('Comment').setup()
+require('image').enable()
 
 vim.lsp.enable('laravel_ls')
 
