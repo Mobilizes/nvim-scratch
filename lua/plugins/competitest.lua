@@ -47,7 +47,7 @@ return {
 		require('competitest').setup({
 			evaluate_template_modifiers = true,
 			compile_command = {
-				cpp = { exec = 'g++', args = { '-Wall', '$(FABSPATH)', '-o', '$(FNOEXT)' } },
+				cpp = { exec = 'g++', args = { '--std=c++20', '-Wall', '$(FABSPATH)', '-o', '$(FNOEXT)' } },
 				rust = { exec = 'rustc', args = { '$(FABSPATH)' } },
 			},
 			run_command = {
