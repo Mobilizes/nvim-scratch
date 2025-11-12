@@ -20,6 +20,7 @@ require('mason-lspconfig').setup({
 		'ts_ls',
 		'bashls',
 		'gopls',
+    'cssls',
 	},
 })
 require('mason-tool-installer').setup({
