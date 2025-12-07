@@ -51,6 +51,7 @@ require('conform').setup({
 		blade = { 'blade-formatter' },
 		python = { 'black' },
 		javascript = { 'prettier' },
+		typescript = { 'prettier' },
 		html = { 'prettier' },
 		css = { 'prettier' },
 		sh = { 'shfmt' },
