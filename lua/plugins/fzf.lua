@@ -5,7 +5,7 @@ return {
 		opts = {},
 		keys = {
 			{ '<leader>f', '', desc = 'fzf' },
-			{ '<leader>ff', ':FzfLua files<CR>', desc = 'Find files' },
+			-- { '<leader>ff', ':FzfLua files<CR>', desc = 'Find files' },
 			{ '<leader>fr', ':FzfLua oldfiles<CR>', desc = 'Find recent files' },
 		},
 	},
