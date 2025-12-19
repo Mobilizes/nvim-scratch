@@ -23,10 +23,7 @@ vim.g.loaded_netrwPlugin = 1
 vim.opt.termguicolors = true
 
 require('customs')
-require('config.lazy')
-require('config.setup')
-require('config.autocmds')
-require('config.keymaps')
+require('config')
 
 vim.cmd('colorscheme catppuccin-mocha')
 

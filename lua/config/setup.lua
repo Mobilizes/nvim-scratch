@@ -20,7 +20,7 @@ require('mason-lspconfig').setup({
 		'ts_ls',
 		'bashls',
 		'gopls',
-    'cssls',
+		'cssls',
 	},
 })
 require('mason-tool-installer').setup({
@@ -144,3 +144,25 @@ vim.lsp.config.clangd = {
 	root_markers = { '.clangd', 'compile_commands.json' },
 	filetypes = { 'c', 'cpp' },
 }
+
+vim.lsp.config('pylsp', {
+	settings = {
+		pylsp = {
+			plugins = {
+				jedi_completion = {
+					include_class_objects = true,
+					include_function_objects = true,
+				},
+				-- mccabe = {
+				-- 	enabled = false,
+				-- },
+				-- pyflakes = {
+				-- 	enabled = false,
+				-- },
+				-- pycodestyle = {
+				-- 	enabled = false,
+				-- },
+			},
+		},
+	},
+})
