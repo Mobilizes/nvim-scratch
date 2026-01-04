@@ -70,21 +70,21 @@ require('rainbow_csv').setup({})
 require('Comment').setup()
 require('colorizer').setup()
 require('image').enable()
-require('bufferline').setup({
-	options = {
-		custom_filter = function(buf_number, buf_numbers)
-			local excluded = { '', 'grug-far', 'help' }
-			local filetype = vim.bo[buf_number].filetype
-			for _, ft in ipairs(excluded) do
-				if filetype == ft then
-					return false
-				end
-			end
-
-			return true
-		end,
-	},
-})
+-- require('bufferline').setup({
+-- 	options = {
+-- 		custom_filter = function(buf_number, buf_numbers)
+-- 			local excluded = { '', 'grug-far', 'help' }
+-- 			local filetype = vim.bo[buf_number].filetype
+-- 			for _, ft in ipairs(excluded) do
+-- 				if filetype == ft then
+-- 					return false
+-- 				end
+-- 			end
+--
+-- 			return true
+-- 		end,
+-- 	},
+-- })
 
 vim.lsp.enable('laravel_ls')
 

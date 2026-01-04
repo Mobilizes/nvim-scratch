@@ -1,5 +1,6 @@
 return {
 	'akinsho/bufferline.nvim',
+  enabled = false,
 	version = '*',
 	dependencies = 'nvim-tree/nvim-web-devicons',
 	keys = {
@@ -27,7 +28,7 @@ return {
 			desc = 'Delete current buffer',
 			silent = true,
 		},
-		{ '<S-h>', ':bprevious<CR>', silent = true },
-		{ '<S-l>', ':bnext<CR>', silent = true },
+		{ '<S-h>', ':BufferLineCyclePrev<CR>', silent = true },
+		{ '<S-l>', ':BufferLineCycleNext<CR>', silent = true },
 	},
 }
