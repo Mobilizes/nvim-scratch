@@ -6,19 +6,6 @@ return {
 		'stevearc/resession.nvim', -- Optional, for persistent history
 	},
 	config = function()
-		local function get_diagnostics(bufnr, severity)
-			local diagnostics = vim.diagnostic.get(bufnr)
-
-			local count = 0
-			for _, diag in ipairs(diagnostics) do
-				if diag['severity'] == severity then
-					count = count + 1
-				end
-			end
-
-			return count
-		end
-
 		local function fg_red(is_focused)
 			return is_focused and '#FB4934' or '#CC241D'
 		end
@@ -29,6 +16,20 @@ return {
 
 		require('cokeline').setup({
 			show_if_buffers_are_at_least = 2,
+			buffers = {
+				filter_valid = function(buffer)
+					if buffer.type == 'terminal' then
+						return false
+					end
+
+					local excluded = { 'grug-far', 'help' }
+					if vim.tbl_contains(excluded, buffer.filetype) then
+						return false
+					end
+
+					return true
+				end,
+			},
 			components = {
 				{
 					text = function(buffer)
@@ -46,14 +47,11 @@ return {
 							return ''
 						end
 
-						local errors = get_diagnostics(buffer.number, vim.diagnostic.severity.ERROR)
-						local warnings = get_diagnostics(buffer.number, vim.diagnostic.severity.WARN)
-
-						if errors > 0 then
-							text = text .. '  ' .. errors
+						if buffer.diagnostics.errors > 0 then
+							text = text .. '  ' .. buffer.diagnostics.errors
 						end
-						if warnings > 0 then
-							text = text .. '  ' .. warnings
+						if buffer.diagnostics.warnings > 0 then
+							text = text .. '  ' .. buffer.diagnostics.warnings
 						end
 
 						return text
@@ -62,17 +60,17 @@ return {
 						return buffer.is_focused
 					end,
 					fg = function(buffer)
-						if get_diagnostics(buffer.number, vim.diagnostic.severity.ERROR) > 0 then
+						if buffer.diagnostics.errors > 0 then
 							return fg_red(buffer.is_focused)
 						end
-						if get_diagnostics(buffer.number, vim.diagnostic.severity.WARN) > 0 then
+						if buffer.diagnostics.warnings > 0 then
 							return fg_yellow(buffer.is_focused)
 						end
 					end,
 				},
 				{
 					text = function(buffer)
-						if vim.bo[buffer.number].modified then
+						if buffer.is_modified then
 							return ' ●'
 						end
 
