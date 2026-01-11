@@ -21,6 +21,7 @@ require('mason-lspconfig').setup({
 		'bashls',
 		'gopls',
 		'cssls',
+		'neocmake',
 	},
 })
 require('mason-tool-installer').setup({
@@ -36,6 +37,7 @@ require('mason-tool-installer').setup({
 		'shfmt',
 		'goimports',
 		'fixjson',
+		'cmakelang',
 	},
 })
 require('bufferin').setup({})
@@ -70,21 +72,27 @@ require('rainbow_csv').setup({})
 require('Comment').setup()
 require('colorizer').setup()
 require('image').enable()
--- require('bufferline').setup({
--- 	options = {
--- 		custom_filter = function(buf_number, buf_numbers)
--- 			local excluded = { '', 'grug-far', 'help' }
--- 			local filetype = vim.bo[buf_number].filetype
--- 			for _, ft in ipairs(excluded) do
--- 				if filetype == ft then
--- 					return false
--- 				end
--- 			end
---
--- 			return true
--- 		end,
--- 	},
--- })
+require('bufferline').setup({
+	options = {
+		custom_filter = function(buf_number, buf_numbers)
+			local excluded = { '', 'grug-far', 'help' }
+			local filetype = vim.bo[buf_number].filetype
+			for _, ft in ipairs(excluded) do
+				if filetype == ft then
+					return false
+				end
+			end
+
+			return true
+		end,
+    diagnostics = "nvim_lsp",
+		diagnostics_indicator = function(count, level)
+			local icon = level:match('error') and ' ' or ' '
+			return icon .. count
+		end,
+		always_show_bufferline = false,
+	},
+})
 
 vim.lsp.enable('laravel_ls')
 

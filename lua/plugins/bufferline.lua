@@ -1,9 +1,10 @@
 return {
 	'akinsho/bufferline.nvim',
-  enabled = false,
+	enabled = true,
 	version = '*',
 	dependencies = 'nvim-tree/nvim-web-devicons',
 	keys = {
+		{ '<leader>b', '', desc = 'Buffers' },
 		{
 			'<leader>bd',
 			function()
@@ -26,6 +27,31 @@ return {
 				end
 			end,
 			desc = 'Delete current buffer',
+			silent = true,
+		},
+		{
+			'<leader>bp',
+			':BufferLineTogglePin<CR>',
+			desc = 'Toggle pin on current buffer',
+			silent = true,
+		},
+		{
+			'<leader>bP',
+			':BufferLineGroupClose ungrouped<CR>',
+			desc = 'Delete all unpinned buffers',
+			silent = true,
+		},
+		{ '<leader>bb', ':BufferLinePick<CR>', desc = 'Pick a buffer', silent = true },
+		{
+			'<leader>bl',
+			':BufferLineCloseLeft<CR>',
+			desc = 'Delete all buffers to the left',
+			silent = true,
+		},
+		{
+			'<leader>br',
+			':BufferLineCloseRight<CR>',
+			desc = 'Delete all buffers to the right',
 			silent = true,
 		},
 		{ '<S-h>', ':BufferLineCyclePrev<CR>', silent = true },
