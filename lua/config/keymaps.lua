@@ -89,3 +89,19 @@ end, { desc = 'Toggle Terminal' })
 -- Managers
 map('n', '<leader>l', ':Lazy<cr>', { desc = 'Lazy Manager' })
 map('n', '<leader>m', ':Mason<cr>', { desc = 'Mason Manager' })
+
+local helper = require('customs.helper')
+
+helper.run_if_enabled('git-conflict.nvim', function()
+	map('n', '<leader>gm', '<Plug>(git-conflict-ours)', { desc = 'Conflict: Choose ours' })
+	map('n', '<leader>gt', '<Plug>(git-conflict-theirs)', { desc = 'Conflict: Choose theirs' })
+	map('n', '<leader>gb', '<Plug>(git-conflict-both)', { desc = 'Conflict: Choose both' })
+	map('n', '<leader>g0', '<Plug>(git-conflict-none)', { desc = 'Conflict: Choose none' })
+	map(
+		'n',
+		'<leader>g.',
+		'<Plug>(git-conflict-prev-conflict)',
+		{ desc = 'Conflict: Previous conflict' }
+	)
+	map('n', '<leader>g;', '<Plug>(git-conflict-next-conflict)', { desc = 'Conflict: Next conflict' })
+end)

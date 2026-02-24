@@ -49,6 +49,7 @@ require('conform').setup({
 		lua = { 'stylua' },
 		c = { 'clang-format' },
 		cpp = { 'clang-format' },
+		cmake = { 'cmake_format' },
 		php = { 'php_cs_fixer' },
 		blade = { 'blade-formatter' },
 		python = { 'black' },
@@ -75,7 +76,7 @@ require('image').enable()
 require('bufferline').setup({
 	options = {
 		custom_filter = function(buf_number, buf_numbers)
-			local excluded = { '', 'grug-far', 'help' }
+			local excluded = { '', 'qf', 'grug-far', 'help' }
 			local filetype = vim.bo[buf_number].filetype
 			for _, ft in ipairs(excluded) do
 				if filetype == ft then
@@ -85,7 +86,7 @@ require('bufferline').setup({
 
 			return true
 		end,
-    diagnostics = "nvim_lsp",
+		diagnostics = 'nvim_lsp',
 		diagnostics_indicator = function(count, level)
 			local icon = level:match('error') and ' ' or ' '
 			return icon .. count

@@ -90,7 +90,7 @@
 			"const bool desync_stdio = false;",
       "const int floating_precision = 8;",
 			"",
-			"auto solve(int tecs = -1)",
+			"void solve(int tecs = -1)",
 			"{",
 			"  ${2:glhf}",
 			"}",
@@ -844,5 +844,16 @@
 			"local ${1:foo} = ${2:bar}",
 			"return ${3:baz}"
 		]
-	}
+	},
+  "ifndef": {
+    "prefix": "ifndef",
+    "body": [
+      "#ifndef ${1:}",
+      "#define ${1:}",
+      "",
+      "${2:}",
+      "",
+      "#endif  // ${1:}"
+    ]
+  }
 }
