@@ -43,17 +43,19 @@ map('n', '<leader>o', 'ddO', { desc = 'O current line' })
 -- Multi window functionality
 map('n', '<leader>w', '', { desc = 'Window' })
 map('n', '<leader>wv', ':vsplit<CR>', { desc = 'Vertical window split' })
-map('n', '<leader>ws', ':split<CR>', { desc = 'Horizontal window split' })
+map('n', '<leader>wh', ':split<CR>', { desc = 'Horizontal window split' })
 map('n', '<leader>wq', '<C-w>c', { desc = 'Close current window' })
 
 map('n', '<leader>ww', '', { desc = 'Super Window' })
 map('n', '<leader>wwq', '<C-w>o', { desc = 'Close all but current window' })
 
 -- Resize window easily
-map('n', '<leader>wl', '<C-w><', { desc = 'Decrease window width' })
-map('n', '<leader>wr', '<C-w>>', { desc = 'Increase window width' })
-map('n', '<leader>wd', '<C-w>-', { desc = 'Decrease window height' })
-map('n', '<leader>wu', '<C-w>+', { desc = 'Increase window height' })
+map('n', '<leader>wd', '', { desc = 'Decrease window size' })
+map('n', '<leader>wi', '', { desc = 'Increase window size' })
+map('n', '<leader>wdw', '<C-w><', { desc = 'Decrease window width' })
+map('n', '<leader>wdh', '<C-w>-', { desc = 'Decrease window height' })
+map('n', '<leader>wiw', '<C-w>>', { desc = 'Increase window width' })
+map('n', '<leader>wih', '<C-w>+', { desc = 'Increase window height' })
 
 map('n', 'gd', vim.lsp.buf.definition, bufopts, { desc = 'Get definition' })
 map('n', 'gr', vim.lsp.buf.references, bufopts, { desc = 'Get references' })

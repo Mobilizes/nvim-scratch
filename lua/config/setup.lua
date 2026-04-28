@@ -1,3 +1,5 @@
+local helper = require('customs.helper')
+
 require('nvim-web-devicons').set_icon({
 	mason = {
 		icon = '󰢛',
@@ -22,6 +24,8 @@ require('mason-lspconfig').setup({
 		'gopls',
 		'cssls',
 		'neocmake',
+		'rust_analyzer',
+		'postgres_lsp',
 	},
 })
 require('mason-tool-installer').setup({
@@ -38,6 +42,7 @@ require('mason-tool-installer').setup({
 		'goimports',
 		'fixjson',
 		'cmakelang',
+		'pgformatter',
 	},
 })
 require('bufferin').setup({})
@@ -62,10 +67,17 @@ require('conform').setup({
 		zsh = { 'shfmt' },
 		go = { 'goimports' },
 		json = { 'fixjson' },
+		dart = { 'dart_format' },
+		java = { 'google-java-format' },
 	},
 	formatters = {
 		clang_format = {
 			prepend_args = { '--style=file', '--fallback-style=google' },
+		},
+		dart_format = {
+			command = 'dart',
+			args = { 'format', '$FILENAME' },
+			stdin = false,
 		},
 	},
 })
@@ -190,3 +202,23 @@ vim.lsp.config('pylsp', {
 		},
 	},
 })
+
+helper.run_if_enabled('blink-cmp', function()
+	local set_hl = vim.api.nvim_set_hl
+
+	-- Border and Menu Background
+	set_hl(0, 'BlinkCmpMenu', { bg = '#1e222a', fg = '#abb2bf' })
+	set_hl(0, 'BlinkCmpMenuBorder', { fg = '#3e4452', bg = '#1e222a' })
+
+	-- Selection highlight (The "Bar" moving up/down)
+	set_hl(0, 'BlinkCmpMenuSelection', { bg = '#3e4452', fg = 'NONE', bold = true })
+
+	-- Specific Kind Colors (Examples)
+	set_hl(0, 'BlinkCmpKindFunction', { fg = '#c678dd' })
+	set_hl(0, 'BlinkCmpKindVariable', { fg = '#e06c75' })
+	set_hl(0, 'BlinkCmpKindKeyword', { fg = '#56b6c2' })
+	set_hl(0, 'BlinkCmpKindSnippet', { fg = '#d19a66' })
+end)
+helper.run_if_enabled('flutter-tools', function()
+	require('flutter-tools').setup({}) -- use defaults
+end)
