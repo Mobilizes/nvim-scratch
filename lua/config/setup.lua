@@ -25,7 +25,6 @@ require('mason-lspconfig').setup({
 		'cssls',
 		'neocmake',
 		'rust_analyzer',
-		'postgres_lsp',
 	},
 })
 require('mason-tool-installer').setup({
@@ -42,7 +41,7 @@ require('mason-tool-installer').setup({
 		'goimports',
 		'fixjson',
 		'cmakelang',
-		'pgformatter',
+		'sql-formatter',
 	},
 })
 require('bufferin').setup({})
@@ -68,7 +67,7 @@ require('conform').setup({
 		go = { 'goimports' },
 		json = { 'fixjson' },
 		dart = { 'dart_format' },
-		java = { 'google-java-format' },
+		sql = { 'sql-formatter' },
 	},
 	formatters = {
 		clang_format = {

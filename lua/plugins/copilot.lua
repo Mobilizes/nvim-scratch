@@ -1,7 +1,7 @@
 return {
 	{
 		'github/copilot.vim',
-    enabled = false,
+    enabled = true,
 		config = function()
 			vim.g.copilot_enabled = false
 			vim.g.copilot_no_tab_map = true
@@ -30,7 +30,7 @@ return {
 	},
 	{
 		'CopilotC-Nvim/CopilotChat.nvim',
-		enabled = true,
+		enabled = false,
 		dependencies = {
 			{ 'nvim-lua/plenary.nvim', branch = 'master' },
 		},
