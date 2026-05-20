@@ -1,6 +1,6 @@
 return {
 	'yetone/avante.nvim',
-	enabled = true,
+	enabled = false,
 	-- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
 	-- ⚠️ must add this setting! ! !
 	build = vim.fn.has('win32') ~= 0
@@ -68,38 +68,38 @@ return {
 			ft = { 'markdown', 'Avante' },
 		},
 	},
-	keys = {
-		{
-			'<leader>aa',
-			':AvanteChat<CR>',
-			desc = 'Toggle Avante Chat',
-			silent = true,
-			mode = { 'n' },
-		},
-		{
-			'<leader>aa',
-			':AvanteEdit<CR>',
-			desc = 'Edit selected range with AI',
-			silent = true,
-			mode = { 'v' },
-		},
-		{
-			'<leader>a+',
-			function()
-				local tree_ext = require('avante.extensions.nvim_tree')
-				tree_ext.add_file()
-			end,
-			desc = 'Select file in NvimTree',
-			ft = 'NvimTree',
-		},
-		{
-			'<leader>a-',
-			function()
-				local tree_ext = require('avante.extensions.nvim_tree')
-				tree_ext.remove_file()
-			end,
-			desc = 'Deselect file in NvimTree',
-			ft = 'NvimTree',
-		},
-	},
+	-- keys = {
+	-- 	{
+	-- 		'<leader>aa',
+	-- 		':AvanteChat<CR>',
+	-- 		desc = 'Toggle Avante Chat',
+	-- 		silent = true,
+	-- 		mode = { 'n' },
+	-- 	},
+	-- 	{
+	-- 		'<leader>aa',
+	-- 		':AvanteEdit<CR>',
+	-- 		desc = 'Edit selected range with AI',
+	-- 		silent = true,
+	-- 		mode = { 'v' },
+	-- 	},
+	-- 	{
+	-- 		'<leader>a+',
+	-- 		function()
+	-- 			local tree_ext = require('avante.extensions.nvim_tree')
+	-- 			tree_ext.add_file()
+	-- 		end,
+	-- 		desc = 'Select file in NvimTree',
+	-- 		ft = 'NvimTree',
+	-- 	},
+	-- 	{
+	-- 		'<leader>a-',
+	-- 		function()
+	-- 			local tree_ext = require('avante.extensions.nvim_tree')
+	-- 			tree_ext.remove_file()
+	-- 		end,
+	-- 		desc = 'Deselect file in NvimTree',
+	-- 		ft = 'NvimTree',
+	-- 	},
+	-- },
 }

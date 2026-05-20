@@ -7,11 +7,9 @@ return {
 		},
 	},
 	opts = {
-		{
-			mappings = {
-				basic = true,
-				extra = false,
-			},
+		mappings = {
+			basic = true,
+			extra = false,
 		},
 	},
 }

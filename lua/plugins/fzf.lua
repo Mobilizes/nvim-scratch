@@ -1,6 +1,7 @@
 return {
 	{
 		'ibhagwan/fzf-lua',
+    enabled = false,
 		dependencies = { 'nvim-tree/nvim-web-devicons' },
 		opts = {},
 		keys = {
@@ -8,15 +9,5 @@ return {
 			-- { '<leader>ff', ':FzfLua files<CR>', desc = 'Find files' },
 			{ '<leader>fr', ':FzfLua oldfiles<CR>', desc = 'Find recent files' },
 		},
-	},
-	{
-		'folke/which-key.nvim',
-		opts = function()
-			local wk = require('which-key')
-
-			wk.add({
-				{ '<leader>f', '', group = 'fzf', icon = '󰉓' },
-			})
-		end,
 	},
 }

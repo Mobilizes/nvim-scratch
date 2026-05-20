@@ -4,4 +4,9 @@ return {
 	opts = {
 		processor = 'magick_rock',
 	},
+	config = function(_, opts)
+		local image = require('image')
+		image.setup(opts)
+		image.enable()
+	end,
 }

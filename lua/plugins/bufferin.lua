@@ -1,13 +1,11 @@
 return {
 	'wasabeef/bufferin.nvim',
 	cmd = { 'Bufferin' },
-	config = function()
-		require('bufferin').setup()
-	end,
+	opts = {},
 	dependencies = {
 		'nvim-tree/nvim-web-devicons', -- For file icons
 	},
-	-- keys = {
-	-- 	{ '<leader>b', ':Bufferin<cr>', desc = 'Toggle Bufferin', silent = true },
-	-- },
+	keys = {
+		{ '<leader>b', ':Bufferin<cr>', desc = 'Toggle Bufferin', silent = true },
+	},
 }

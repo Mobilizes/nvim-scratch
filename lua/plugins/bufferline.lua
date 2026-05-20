@@ -1,8 +1,33 @@
 return {
 	'akinsho/bufferline.nvim',
-	enabled = true,
+	enabled = false,
 	version = '*',
 	dependencies = 'nvim-tree/nvim-web-devicons',
+	opts = {
+		options = {
+			custom_filter = function(buf_number)
+				if vim.b[buf_number].floater_buffer then
+					return false
+				end
+
+				local excluded = { '', 'qf', 'grug-far', 'help' }
+				local filetype = vim.bo[buf_number].filetype
+				for _, ft in ipairs(excluded) do
+					if filetype == ft then
+						return false
+					end
+				end
+
+				return true
+			end,
+			diagnostics = 'nvim_lsp',
+			diagnostics_indicator = function(count, level)
+				local icon = level:match('error') and ' ' or ' '
+				return icon .. count
+			end,
+			always_show_bufferline = false,
+		},
+	},
 	keys = {
 		{ '<leader>b', '', desc = 'Buffers' },
 		{
