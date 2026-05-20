@@ -8,6 +8,25 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 })
 
 vim.api.nvim_create_autocmd('FileType', {
+	group = vim.api.nvim_create_augroup('native_treesitter', { clear = true }),
+	desc = 'Start native Tree-sitter when a parser is available',
+	pattern = '*',
+	callback = function(args)
+		local filetype = vim.bo[args.buf].filetype
+		if filetype == '' then
+			return
+		end
+
+		local ok, lang = pcall(vim.treesitter.language.get_lang, filetype)
+		if not ok or not lang then
+			return
+		end
+
+		pcall(vim.treesitter.start, args.buf, lang)
+	end,
+})
+
+vim.api.nvim_create_autocmd('FileType', {
 	group = vim.api.nvim_create_augroup('rainbow_csv_autocall', {}),
 	desc = 'Call :RainbowDelim on .csv buffer',
 	pattern = 'csv',
