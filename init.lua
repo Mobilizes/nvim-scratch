@@ -1,15 +1,28 @@
-vim.cmd('set expandtab')
-vim.cmd('set tabstop=2')
-vim.cmd('set softtabstop=2')
-vim.cmd('set shiftwidth=2')
-vim.cmd('set nu rnu')
-vim.cmd('set clipboard=unnamedplus')
-vim.cmd('set noswapfile')
-vim.cmd('set list listchars=tab:>\\ ,trail:-,eol:󰌑 ')
+vim.cmd("set expandtab")
+vim.cmd("set tabstop=2")
+vim.cmd("set softtabstop=2")
+vim.cmd("set shiftwidth=2")
+vim.cmd("set nu rnu")
+vim.cmd("set clipboard=unnamedplus")
+if vim.env.SSH_CONNECTION then
+	vim.g.clipboard = {
+		name = "OSC 52",
+		copy = {
+			["+"] = require("vim.ui.clipboard.osc52").copy("+"),
+			["*"] = require("vim.ui.clipboard.osc52").copy("*"),
+		},
+		paste = {
+			["+"] = require("vim.ui.clipboard.osc52").paste("+"),
+			["*"] = require("vim.ui.clipboard.osc52").paste("*"),
+		},
+	}
+end
+vim.cmd("set noswapfile")
+vim.cmd("set list listchars=tab:>\\ ,trail:-,eol:󰌑 ")
 
 vim.diagnostic.config({
 	virtual_text = {
-		prefix = '●', -- could be "●", "▎", "x", etc.
+		prefix = "●", -- could be "●", "▎", "x", etc.
 	},
 	signs = true,
 	underline = true,
@@ -22,10 +35,10 @@ vim.g.loaded_netrwPlugin = 1
 
 vim.opt.termguicolors = true
 
-require('customs')
-require('config')
+require("customs")
+require("config")
 
-vim.cmd('colorscheme catppuccin-mocha')
+vim.cmd("colorscheme catppuccin-mocha")
 
 local function hsv_to_hex(h, s, v)
 	local c = v * s
@@ -52,19 +65,19 @@ local function hsv_to_hex(h, s, v)
 	local g = math.floor((g_ + m) * 255 + 0.5)
 	local b = math.floor((b_ + m) * 255 + 0.5)
 
-	return string.format('#%02X%02X%02X', r, g, b)
+	return string.format("#%02X%02X%02X", r, g, b)
 end
 
 local hue = 0
 local function animate()
 	hue = (hue + 5) % 360
 	local color = hsv_to_hex(hue, 1, 1)
-	vim.api.nvim_set_hl(0, 'CursorLine', { fg = color })
-	vim.api.nvim_set_hl(0, 'LineNr', { fg = color })
+	vim.api.nvim_set_hl(0, "CursorLine", { fg = color })
+	vim.api.nvim_set_hl(0, "LineNr", { fg = color })
 
 	vim.defer_fn(animate, 100)
 end
 
-vim.api.nvim_set_hl(0, 'LineNrAbove', { fg = '#45454d' })
+vim.api.nvim_set_hl(0, "LineNrAbove", { fg = "#45454d" })
 animate()
-vim.api.nvim_set_hl(0, 'LineNrBelow', { fg = '#45454d' })
+vim.api.nvim_set_hl(0, "LineNrBelow", { fg = "#45454d" })

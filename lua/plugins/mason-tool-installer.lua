@@ -9,7 +9,6 @@ return {
 			'blade-formatter',
 			'stylua',
 			'black',
-			'duster',
 			'prettier',
 			'shfmt',
 			'goimports',
