@@ -1,10 +1,15 @@
 -- Remove some default keymaps
-vim.keymap.del('n', 'gri')
-vim.keymap.del('n', 'grr')
-vim.keymap.del('n', 'gra')
-vim.keymap.del('n', 'grn')
-vim.keymap.del('x', 'gra')
-vim.keymap.del('x', 'gcu')
+local function safe_del(mode, lhs)
+	pcall(vim.keymap.del, mode, lhs)
+end
+safe_del('n', 'gri')
+safe_del('n', 'grr')
+safe_del('n', 'gra')
+safe_del('n', 'grn')
+safe_del('x', 'gra')
+safe_del('x', 'gcu')
+safe_del('n', 'grt')
+safe_del('n', 'grx')
 
 -- Map silencer
 local function map(mode, lhs, rhs, opts)
@@ -52,9 +57,9 @@ map('n', '<leader>wwq', '<C-w>o', { desc = 'Close all but current window' })
 -- Resize window easily
 map('n', '<leader>wd', '', { desc = 'Decrease window size' })
 map('n', '<leader>wi', '', { desc = 'Increase window size' })
-map('n', '<leader>wdw', '<C-w><', { desc = 'Decrease window width' })
+map('n', '<leader>wdv', '<C-w><', { desc = 'Decrease window width' })
 map('n', '<leader>wdh', '<C-w>-', { desc = 'Decrease window height' })
-map('n', '<leader>wiw', '<C-w>>', { desc = 'Increase window width' })
+map('n', '<leader>wiv', '<C-w>>', { desc = 'Increase window width' })
 map('n', '<leader>wih', '<C-w>+', { desc = 'Increase window height' })
 
 map('n', 'gd', vim.lsp.buf.definition, bufopts, { desc = 'Get definition' })

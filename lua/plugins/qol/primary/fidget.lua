@@ -1,3 +1,8 @@
+-- Fidget is an unintrusive window in the corner of your editor that manages its own lifetime. Its goals are:
+--   to provide a UI for Neovim's $/progress handler
+--   to provide a configurable vim.notify() backend
+--   to support basic ASCII animations (Fidget spinners!) to indicate signs of life
+--   to be easy to configure, sane to maintain, and fun to hack on
 return {
 	'j-hui/fidget.nvim',
 	opts = {

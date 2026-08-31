@@ -26,7 +26,7 @@ return {
 				desc = 'Find files',
 			},
 			{
-				'<leader>fg',
+				'<leader>fw',
 				function()
 					require('fff').live_grep()
 				end,
